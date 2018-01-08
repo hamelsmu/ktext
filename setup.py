@@ -5,7 +5,7 @@ from setuptools import find_packages
 setup(
     name='kerasparalleltext',
     packages=find_packages(),
-    version='0.14',
+    version='0.15',
     description='Pre-processing text in parallel for Keras in python.',
     author='Hamel Husain',
     author_email='hamel.husain@gmail.com',
@@ -17,6 +17,8 @@ setup(
                       'pandas',
                       'pyyaml',
                       'pathos',
+                      'msgpack',
+                      'msgpack_numpy',
                       'dask',
                       'pyarrow',
                       'more_itertools',
@@ -33,7 +35,7 @@ setup(
                   'pytest-cov',
                   'pandas'],
     },
-    download_url='https://github.com/hamelsmu/KerasParallelText/archive/0.14.tar.gz',
+    download_url='https://github.com/hamelsmu/KerasParallelText/archive/0.15.tar.gz',
     classifiers=[
         'Development Status :: 1 - Planning',
         'Programming Language :: Python :: 3.6',
