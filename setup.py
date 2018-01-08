@@ -14,7 +14,7 @@ setup(
     install_requires=['numpy',
                       'scipy',
                       'six',
-                      'pandas'
+                      'pandas',
                       'pyyaml',
                       'pathos',
                       'dask',
