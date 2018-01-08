@@ -1,0 +1,10 @@
+README.md
+setup.cfg
+setup.py
+ktext/__init__.py
+ktext/preprocess.py
+ktext.egg-info/PKG-INFO
+ktext.egg-info/SOURCES.txt
+ktext.egg-info/dependency_links.txt
+ktext.egg-info/requires.txt
+ktext.egg-info/top_level.txt
