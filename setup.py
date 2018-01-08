@@ -12,7 +12,7 @@ class MyInstall(install):
 setup(
     name='kerasparalleltext',
     packages=find_packages(),
-    version='0.20',
+    version='0.21',
     description='Pre-processing text in parallel for Keras in python.',
     author='Hamel Husain',
     author_email='hamel.husain@gmail.com',
@@ -25,7 +25,6 @@ setup(
                       'pyyaml',
                       'pathos',
                       'msgpack',
-                      'tensorflow-gpu',
                       'msgpack_numpy',
                       'dask',
                       'pyarrow',
@@ -43,7 +42,7 @@ setup(
                   'pytest-cov',
                   'pandas'],
     },
-    download_url='https://github.com/hamelsmu/KerasParallelText/archive/0.20.tar.gz',
+    download_url='https://github.com/hamelsmu/KerasParallelText/archive/0.21.tar.gz',
     classifiers=[
         'Development Status :: 1 - Planning',
         'Programming Language :: Python :: 3.6',
