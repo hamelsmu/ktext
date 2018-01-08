@@ -10,13 +10,13 @@ class MyInstall(install):
         install.run(self)
 
 setup(
-    name='kerasparalleltext',
+    name='ktext',
     packages=find_packages(),
-    version='0.21',
+    version='0.22',
     description='Pre-processing text in parallel for Keras in python.',
     author='Hamel Husain',
     author_email='hamel.husain@gmail.com',
-    url='https://github.com/hamelsmu/KerasParallelText',
+    url='https://github.com/hamelsmu/ktext',
     license='MIT',
     install_requires=['numpy',
                       'scipy',
@@ -42,7 +42,7 @@ setup(
                   'pytest-cov',
                   'pandas'],
     },
-    download_url='https://github.com/hamelsmu/KerasParallelText/archive/0.21.tar.gz',
+    download_url='https://github.com/hamelsmu/ktext/archive/0.22.tar.gz',
     classifiers=[
         'Development Status :: 1 - Planning',
         'Programming Language :: Python :: 3.6',
