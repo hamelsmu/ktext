@@ -1,6 +1,6 @@
 [![GitHub license](https://img.shields.io/github/license/hamelsmu/ktext.svg)](https://github.com/hamelsmu/ktext/blob/master/LICENSE)
 
-# Utilities for pre-processing text for deep learning for [Keras](https://keras.io/).  
+# Utilities for pre-processing text for deep learning in [Keras](https://keras.io/).  
 
 `ktext` performs common pre-processing steps associated with deep learning (cleaning, tokenization, padding, truncation).  Most importantly, `ktext` allows you to perform these steps using process-based threading in parallel.  If you don't think you might benefit from parallelization, consider using the text preprocessing utilities [in keras](https://keras.io/preprocessing/text/) instead.
 
