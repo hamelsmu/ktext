@@ -1,16 +1,16 @@
-[![GitHub license](https://img.shields.io/github/license/hamelsmu/KerasParallelText.svg)](https://github.com/hamelsmu/KerasParallelText/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/hamelsmu/ktext.svg)](https://github.com/hamelsmu/ktext/blob/master/LICENSE)
 
 # Utilities for pre-processing text for deep learning for [Keras](https://keras.io/).  
 
-`KerasParallelText` performs common pre-processing steps associated with deep learning (cleaning, tokenization, padding, truncation).  Most importantly, `KerasParallelText` allows you to perform these steps using process-based threading in parallel.  If you don't think you might benefit from parallelization, consider using the text preprocessing utilities [in keras](https://keras.io/preprocessing/text/) instead.
+`ktext` performs common pre-processing steps associated with deep learning (cleaning, tokenization, padding, truncation).  Most importantly, `ktext` allows you to perform these steps using process-based threading in parallel.  If you don't think you might benefit from parallelization, consider using the text preprocessing utilities [in keras](https://keras.io/preprocessing/text/) instead.
 
-`KerasParallelText` helps you with the following:
+`ktext` helps you with the following:
 
 1.  **Cleaning** You may want to clean your data to remove items like phone numbers and email addresses and replace them with generic tags, or remove HTML.  This step is optional, but can help remove noise in your data.
 
 2.  **Tokenization** Take a raw string, ex "Hello World!" and tokenize it so it looks like ['Hello', 'World', '!']
 
-3. **Generating Vocabulary and a {Token -> index} mapping** Map each unique token in your corpus to an integer value.  This usually stored as a dictionary.  For example {'Hello': 2, 'World':3, '!':4} might be a valid mapping from tokens to integers.  You usually want to reserve an integer for rare or unseen words (`KerasParallelText` uses `1`) and another integer for padding (`KerasParallelText` uses `0`).  You can set a threshold for rare words (see documentation).
+3. **Generating Vocabulary and a {Token -> index} mapping** Map each unique token in your corpus to an integer value.  This usually stored as a dictionary.  For example {'Hello': 2, 'World':3, '!':4} might be a valid mapping from tokens to integers.  You usually want to reserve an integer for rare or unseen words (`ktext` uses `1`) and another integer for padding (`ktext` uses `0`).  You can set a threshold for rare words (see documentation).
 
 4.  **Truncating and Padding** While it is not necessary, it can be much easier if all your documents are the same length.  The way we can accomplish this is through truncating and padding.  For all documents below the desired length we can pad the document with 0's and  documents above the desired length can be truncated.  This utility allows you to build a histogram of your document lengths and choose a sensible document length for your corpus.
 
@@ -23,4 +23,4 @@ Note: This utility is useful if all of your data can fit into memory on a single
 
 ## Installation
 
-> $ pip install kerasparalleltext
+> $ pip install ktext
