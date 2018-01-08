@@ -2,7 +2,7 @@
 
 # Utilities for pre-processing text for deep learning for [Keras](https://keras.io/).  
 
-`KerasParallelText` performs common pre-processing steps associated with deep learning (cleaning, tokenization, padding, truncation) such that you can trivially apply the same transformations at prediction and evaluation time.  Most importantly, `KerasParallelText` allows you to perform these steps using process-based threading in parallel.  If you don't think you might benefit from parallelization, consider using the text preprocessing utilities [in keras](https://keras.io/preprocessing/text/) instead.
+`KerasParallelText` performs common pre-processing steps associated with deep learning (cleaning, tokenization, padding, truncation).  Most importantly, `KerasParallelText` allows you to perform these steps using process-based threading in parallel.  If you don't think you might benefit from parallelization, consider using the text preprocessing utilities [in keras](https://keras.io/preprocessing/text/) instead.
 
 `KerasParallelText` helps you with the following:
 
