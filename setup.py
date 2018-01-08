@@ -17,6 +17,7 @@ setup(
                       'pandas'
                       'pyyaml',
                       'pathos',
+                      'dask',
                       'pyarrow',
                       'more_itertools',
                       'textacy',
