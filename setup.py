@@ -5,7 +5,7 @@ from setuptools import find_packages
 setup(
     name='kerasparalleltext',
     packages=find_packages(),
-    version='0.1',  # Ideally should be same as your GitHub release tag varsion
+    version='0.1',
     description='Pre-processing text in parallel for Keras in python.',
     author='Hamel Husain',
     author_email='hamel.husain@gmail.com',
@@ -30,7 +30,7 @@ setup(
                   'pytest-cov',
                   'pandas'],
     },
-    download_url='download link you saved',
+    download_url='https://github.com/hamelsmu/KerasParallelText/archive/0.1.tar.gz',
     classifiers=[
         'Development Status :: 1 - Planning Development Status',
         'Programming Language :: Python :: 3.6',
