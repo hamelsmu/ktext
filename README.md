@@ -23,4 +23,4 @@ Note: This utility is useful if all of your data can fit into memory on a single
 
 ## Installation
 
-> pip install kerasparalleltext
+> $ pip install kerasparalleltext
