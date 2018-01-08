@@ -14,8 +14,10 @@ setup(
     install_requires=['numpy',
                       'scipy',
                       'six',
+                      'pandas'
                       'pyyaml',
                       'pathos',
+                      'pyarrow',
                       'more_itertools',
                       'textacy',
                       'gensim',
@@ -32,7 +34,7 @@ setup(
     },
     download_url='https://github.com/hamelsmu/KerasParallelText/archive/0.1.tar.gz',
     classifiers=[
-        'Development Status :: 1 - Planning Development Status',
+        'Development Status :: 1 - Planning',
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules'
