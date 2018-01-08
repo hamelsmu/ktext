@@ -1,0 +1,19 @@
+*.DS_Store
+*.pyc
+*.swp
+temp/*
+dist/*
+build/*
+docs/site/*
+docs/theme/*
+docs/sources/*
+tags
+kerasparalleltext.egg-info
+
+# test-related
+.coverage
+.cache
+
+# developer environments
+.idea
+.vscode
