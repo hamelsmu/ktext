@@ -20,3 +20,7 @@ Note: This utility is useful if all of your data can fit into memory on a single
 
 ## Documentation
 [This notebook](./notebooks/Tutorial.ipynb) contains a tutorial on how to use this library.
+
+## Installation
+
+> pip install kerasparalleltext
