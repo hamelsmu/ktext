@@ -1,12 +1,12 @@
 Metadata-Version: 1.1
 Name: ktext
-Version: 0.22
+Version: 0.26
 Summary: Pre-processing text in parallel for Keras in python.
 Home-page: https://github.com/hamelsmu/ktext
 Author: Hamel Husain
 Author-email: hamel.husain@gmail.com
 License: MIT
-Download-URL: https://github.com/hamelsmu/ktext/archive/0.22.tar.gz
+Download-URL: https://github.com/hamelsmu/ktext/archive/0.26.tar.gz
 Description-Content-Type: UNKNOWN
 Description: UNKNOWN
 Platform: UNKNOWN
