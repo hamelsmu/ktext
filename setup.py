@@ -43,7 +43,7 @@ setup(
                   'pytest-cov',
                   'pandas'],
     },
-    download_url='https://github.com/hamelsmu/ktext/archive/0.23.tar.gz',
+    download_url='https://github.com/hamelsmu/ktext/archive/0.24.tar.gz',
     classifiers=[
         'Development Status :: 1 - Planning',
         'Programming Language :: Python :: 3.6',
