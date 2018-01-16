@@ -291,14 +291,13 @@ class processor(processor_base):
         logging.warning(f'(1/3) done. {time_diff(now)} sec')
         logging.warning(f'....building corpus')
         now = get_time()
-        corpus_list = apply_parallel(tokenized_data, build_corpus)
+        corpus = build_corpus(tokenized_data)
 
         # Merge the corpuses from each thread together, this is like a "reduce" step
         logging.warning(f'(2/3) done. {time_diff(now)} sec')
         logging.warning(f'....consolidating corpus')
         now = get_time()
-        for c in corpus_list:
-            self.vocabulary.merge_with(c)
+        self.vocabulary.merge_with(corpus)
 
         # # get rid of rare tokens from corpus such that they will get the same id
         self.vocabulary.filter_extremes(no_below,
