@@ -11,14 +11,13 @@ from textacy.preprocess import preprocess_text
 from textacy.corpus import Corpus
 from gensim.corpora.dictionary import Dictionary
 from keras.preprocessing.sequence import pad_sequences
+from keras.preprocessing.text import text_to_word_sequence
 import pandas as pd
-import spacy
 import logging
 from itertools import chain
 from collections import Counter
 import timeit
 
-spacyen_default = spacy.load('en')
 
 def get_time():
     return timeit.default_timer()
@@ -57,16 +56,6 @@ def textacy_cleaner(text: str) -> str:
                            no_accents=True)
 
 
-def spacy_tokenizer(text: str, spacylang=None) -> List[str]:
-    """
-    Tokenize a string.
-    ex:  'Hello World' -> ['Hello', 'World']
-    """
-    if spacylang is None:
-        spacylang = spacyen_default
-    return [tok.text for tok in spacylang.tokenizer(text)]
-
-
 def apply_parallel(data: List[Any], func: Callable) -> List[Any]:
     """
     Apply function to list of elements.
@@ -101,7 +90,7 @@ class processor_base(object):
             self.cleaner = textacy_cleaner
 
         if tokenizer is None:
-            self.tokenizer = spacy_tokenizer
+            self.tokenizer = text_to_word_sequence
 
     def set_tokenizer(self, func: Callable) -> None:
         """
@@ -109,7 +98,6 @@ class processor_base(object):
 
         This is a function that f(str) -> List(str)
         """
-        raise NotImplementedError
         self.tokenizer = func
 
     def set_cleaner(self, func: Callable) -> None:
@@ -118,7 +106,6 @@ class processor_base(object):
 
         This is a function that f(str) -> str
         """
-        raise NotImplementedError
         self.cleaner = func
 
 
