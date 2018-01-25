@@ -13,7 +13,7 @@ class MyInstall(install):
 setup(
     name='ktext',
     packages=find_packages(),
-    version='0.27',
+    version='0.30',
     description='Pre-processing text in parallel for Keras in python.',
     author='Hamel Husain',
     author_email='hamel.husain@gmail.com',
@@ -41,7 +41,7 @@ setup(
                   'pytest-cov',
                   'pandas'],
     },
-    download_url='https://github.com/hamelsmu/ktext/archive/0.27.tar.gz',
+    download_url='https://github.com/hamelsmu/ktext/archive/0.30.tar.gz',
     classifiers=[
         'Development Status :: 1 - Planning',
         'Programming Language :: Python :: 3.6',
