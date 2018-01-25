@@ -16,6 +16,8 @@ from itertools import chain
 from collections import Counter
 import timeit
 
+def flattenlist(listoflists):
+    return list(chain.from_iterable(listoflists))
 
 def get_time():
     return timeit.default_timer()
@@ -67,7 +69,6 @@ def apply_parallel(func: Callable,
         cpu_cores = cpu_count()
 
     try:
-        logging.warning(f'....using {cpu_cores} cores')
         chunk_size = ceil(len(data) / cpu_cores)
         pool = Pool(cpu_cores)
         transformed_data = pool.map(func, chunked(data, chunk_size), chunksize=1)
@@ -75,6 +76,20 @@ def apply_parallel(func: Callable,
         pool.close()
         pool.join()
         return transformed_data
+
+
+def process_text_constructor(cleaner: Callable,
+                             tokenizer: Callable,
+                             append_indicators: bool,
+                             start_tok: str,
+                             end_tok: str):
+    """Generate a function that will clean and tokenize text."""
+    def process_text(text):
+        if append_indicators:
+            return [[start_tok] + tokenizer(cleaner(doc)) + [end_tok] for doc in text]
+        return [tokenizer(cleaner(doc)) for doc in text]
+
+    return process_text
 
 
 class processor_base(object):
@@ -202,13 +217,22 @@ class processor(processor_base):
 
     def process_text(self, text: List[str]) -> List[List[str]]:
         """Combine the cleaner and tokenizer."""
-        if self.append_indicators:
-            return [[self.start_tok] + self.tokenizer(self.cleaner(doc)) + [self.end_tok] for doc in text]
-        return [self.tokenizer(self.cleaner(doc)) for doc in text]
+        process_text = process_text_constructor(cleaner=self.cleaner,
+                                                tokenizer=self.tokenizer,
+                                                append_indicators=self.append_indicators,
+                                                start_tok=self.start_tok,
+                                                end_tok=self.end_tok)
+        return process_text(text)
 
     def parallel_process_text(self, data: List[str]) -> List[List[str]]:
         """Apply cleaner -> tokenizer."""
-        return list(chain.from_iterable(apply_parallel(self.process_text, data, self.num_cores)))
+        process_text = process_text_constructor(cleaner=self.cleaner,
+                                                tokenizer=self.tokenizer,
+                                                append_indicators=self.append_indicators,
+                                                start_tok=self.start_tok,
+                                                end_tok=self.end_tok)
+        n_cores = self.num_cores
+        return flattenlist(apply_parallel(process_text, data, n_cores))
 
     def generate_doc_length_stats(self):
         """Analyze document length statistics for padding strategy"""
@@ -352,22 +376,7 @@ class processor(processor_base):
         [[1, 2, 3, 4], [5, 6, 1, 7, 8]]
         """
         logging.warning(f'...tokenizing data')
-        cleaner = self.cleaner
-        tokenizer = self.tokenizer
-        append_indicators = self.append_indicators
-        start_tok = self.start_tok
-        end_tok = self.end_tok
-        num_cores = self.num_cores
-
-        # I had to rebuild this function in the same way so that process based
-        # threading would work, otherwise gets bogged down by copying the entire
-        # class
-        def process_text(text):
-            if append_indicators:
-                return [[start_tok] + tokenizer(cleaner(doc)) + [end_tok] for doc in text]
-            return [tokenizer(cleaner(doc)) for doc in text]
-
-        tokenized_data = list(chain.from_iterable(apply_parallel(process_text, data, num_cores)))
+        tokenized_data = self.parallel_process_text(data)
         logging.warning(f'...indexing data')
         indexed_data = self.indexer.tokenized_texts_to_sequences(tokenized_data)
         logging.warning(f'...padding data')
@@ -453,8 +462,6 @@ class custom_Indexer(Tokenizer):
         # Yields
             Yields individual sequences.
         """
-        num_words = self.num_words
-
         for seq in tok_texts:
             vect = []
             for w in seq:
