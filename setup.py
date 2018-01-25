@@ -31,7 +31,6 @@ setup(
                       'pyarrow',
                       'more_itertools',
                       'textacy',
-                      'gensim',
                       'keras'],
     extras_require={
         'h5py': ['h5py'],
