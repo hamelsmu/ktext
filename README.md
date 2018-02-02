@@ -14,7 +14,7 @@
 
 4.  **Truncating and Padding** While it is not necessary, it can be much easier if all your documents are the same length.  The way we can accomplish this is through truncating and padding.  For all documents below the desired length we can pad the document with 0's and  documents above the desired length can be truncated.  This utility allows you to build a histogram of your document lengths and choose a sensible document length for your corpus.
 
-This utility accomplishes all of the above using process-based threading for speed, and uses [textacy](https://textacy.readthedocs.io/en/latest/) and [spacy](https://spacy.io/) by default.  Sklearn style `fit`, `transform`, and `fit_transform` interfaces are provided (but not directly compatible with sklearn yet).  Pull requests and comments are welcome.  
+This utility accomplishes all of the above using process-based threading for speed.  Sklearn style `fit`, `transform`, and `fit_transform` interfaces are provided (but not directly compatible with sklearn yet).  Pull requests and comments are welcome.  
 
 Note: This utility is useful if all of your data can fit into memory on a single node.  Otherwise, if your data cannot fit into memory, consider using distributing computing paradigms such as Hive, Spark or Dask.  
 
