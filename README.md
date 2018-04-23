@@ -1,4 +1,6 @@
-[![GitHub license](https://img.shields.io/github/license/hamelsmu/ktext.svg)](https://github.com/hamelsmu/ktext/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/hamelsmu/ktext.svg)](https://github.com/hamelsmu/ktext/blob/master/LICENSE) 
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)](https://github.com/hamelsmu/ktext)
+
 
 # Utilities for pre-processing text for deep learning in [Keras](https://keras.io/).  
 
