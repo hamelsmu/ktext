@@ -135,7 +135,7 @@ class processor(processor_base):
     Includes utilities for cleaning, tokenization, and vectorization in parallel.
     """
     def __init__(self,
-                 hueristic_pct_padding: float = .90,
+                 heuristic_pct_padding: float = .90,
                  append_indicators: bool = False,
                  keep_n: int = 150000,
                  padding: str = 'pre',
@@ -145,9 +145,9 @@ class processor(processor_base):
         """
         Parameters:
         ----------
-        hueristic_pct_padding: float
+        heuristic_pct_padding: float
             This parameter is only used if `padding_maxlen` = None.  A histogram
-            of documents is calculated, and the maxlen is set hueristic_pct_padding.
+            of documents is calculated, and the maxlen is set heuristic_pct_padding.
         append_indicators: bool
             If True, will append the tokens '_start_' and '_end_' to the beginning
             and end of your tokenized documents.  This can be useful when training
@@ -161,7 +161,7 @@ class processor(processor_base):
         padding_maxlen : int or None
             Maximum sequence length, longer sequences are truncated and shorter
             sequences are padded with zeros at the end.  Note if this is specified,
-            the `hueristic_pct_padding` is ignored.
+            the `heuristic_pct_padding` is ignored.
         truncating : str
             'pre' or 'post', remove values from sequences larger than padding_maxlen
             either in the beginning or in the end of the sequence.
@@ -183,7 +183,7 @@ class processor(processor_base):
             histogram of document lengths.  Can be used to decide padding_maxlen.
         """
         super().__init__()
-        self.hueristic_pct = hueristic_pct_padding
+        self.heuristic_pct = heuristic_pct_padding
         self.append_indicators = append_indicators
         self.keep_n = keep_n
         self.padding = padding
@@ -236,17 +236,17 @@ class processor(processor_base):
 
     def generate_doc_length_stats(self):
         """Analyze document length statistics for padding strategy"""
-        hueristic = self.hueristic_pct
+        heuristic = self.heuristic_pct
         histdf = (pd.DataFrame([(a, b) for a, b in self.document_length_histogram.items()],
                                columns=['bin', 'doc_count'])
                   .sort_values(by='bin'))
         histdf['cumsum_pct'] = histdf.doc_count.cumsum() / histdf.doc_count.sum()
 
         self.document_length_stats = histdf
-        self.doc_length_huerestic = histdf.query(f'cumsum_pct >= {hueristic}').bin.head(1).values[0]
+        self.doc_length_huerestic = histdf.query(f'cumsum_pct >= {heuristic}').bin.head(1).values[0]
         logging.warning(' '.join(["Setting maximum document length to",
                                   f'{self.doc_length_huerestic} based upon',
-                                  f'hueristic of {hueristic} percentile.\n',
+                                  f'heuristic of {heuristic} percentile.\n',
                                   'See full histogram by insepecting the',
                                   "`document_length_stats` attribute."]))
         self.padding_maxlen = self.doc_length_huerestic
