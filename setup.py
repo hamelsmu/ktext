@@ -31,7 +31,8 @@ setup(
                       'pyarrow',
                       'more_itertools',
                       'textacy',
-                      'keras'],
+                      'keras',
+                      'tensorflow'],
     extras_require={
         'h5py': ['h5py'],
         'visualize': ['pydot'],
