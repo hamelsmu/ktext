@@ -15,8 +15,8 @@ class Neg_Sampling_Data_Gen(Sequence):
     Inspiration taken from: https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly.html
     """
     def __init__(self,
-                 vectorized_text1,
-                 vectorized_text2,
+                 vectorized_text1: np.ndarray,
+                 vectorized_text2: np.ndarray,
                  bs: int,
                  neg_sample_per_pair: int,
                  shuffle: bool = True) -> ClassVar:
@@ -30,7 +30,7 @@ class Neg_Sampling_Data_Gen(Sequence):
             This is the vectorized version of a complimentary body of text that has the
             same number of rows of `vectorized_text1`
         bs : int
-            batch size
+            batch size.
         neg_sample_per_pair : int
             The number of negative samples you want to generate per pair of matching texts. This
             will cause your effective batch size to increase to bs * neg_sample_per_pair
@@ -76,7 +76,7 @@ class Neg_Sampling_Data_Gen(Sequence):
             np.random.shuffle(self.indexes)
 
     def __negative_sampling(self,
-                            indexes: np.ndarray) -> Tuple[List, np.ndarray]:
+                            indexes:np.ndarray) -> Tuple[List, np.ndarray]:
 
         # cartesian product of indexes paired with itself
         idxs = np.array(np.meshgrid(indexes, indexes))
@@ -103,7 +103,7 @@ class Neg_Sampling_Data_Gen(Sequence):
         text2 = self.text2[final_idxs[:, 1]]
 
         # label = 1 when indices are equal, otherwise 0
-        labels = np.equal(final_idxs[:, 0], final_idxs[:, 1])
+        labels = np.equal(final_idxs[:, 0], final_idxs[:, 1]) * 1  # convert to int
 
         # checks
         assert text1.shape[0] == self.eff_bs, f'Num of rows returned from text1 {text1.shape[0]:,} does not match expected value of {self.eff_bs:,}.'
