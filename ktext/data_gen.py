@@ -15,8 +15,8 @@ class Neg_Sampling_Data_Gen(Sequence):
     Inspiration taken from: https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly.html
     """
     def __init__(self,
-                 vectorized_text1: np.ndarray,
-                 vectorized_text2: np.ndarray,
+                 vectorized_text1,
+                 vectorized_text2,
                  bs: int,
                  shuffle: bool = True) -> ClassVar:
         """
