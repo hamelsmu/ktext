@@ -76,7 +76,7 @@ class Neg_Sampling_Data_Gen(Sequence):
             np.random.shuffle(self.indexes)
 
     def __negative_sampling(self,
-                            indexes:np.ndarray) -> Tuple[List, np.ndarray]:
+                            indexes: np.ndarray) -> Tuple[List, np.ndarray]:
 
         # cartesian product of indexes paired with itself
         idxs = np.array(np.meshgrid(indexes, indexes))
