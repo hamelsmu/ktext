@@ -49,7 +49,7 @@ class Neg_Sampling_Data_Gen(Sequence):
 
     def __len__(self):
         'Denotes the number of batches per epoch'
-        return int(np.floor(len(self.nrows) / self.bs))
+        return self.nrows // self.bs
 
     def __getitem__(self, index: int) -> Tuple:
         'Generate one batch of data'
