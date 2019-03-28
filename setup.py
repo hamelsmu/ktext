@@ -30,7 +30,7 @@ setup(
                       'dask',
                       'pyarrow',
                       'more_itertools',
-                      'textacy',
+                      'textacy<=0.6.2',
                       'keras',
                       'tensorflow'],
     extras_require={
