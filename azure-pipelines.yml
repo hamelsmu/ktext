@@ -19,6 +19,7 @@ jobs:
     vmImage: 'Ubuntu 16.04'
   steps:
   - script: |
+      apt install python3-pip --reinstall
       python -m pip install --upgrade pip  
       pip install twine wheel setuptools
     displayName: 'install dependencies'
