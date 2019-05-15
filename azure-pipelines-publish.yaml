@@ -1,10 +1,7 @@
 trigger:
   branches:
     include:
-    - release
-  paths:
-    include:
-    - ktext/*
+    - releases/*
 
 pool:
   vmImage: 'Ubuntu-16.04'
