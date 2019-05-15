@@ -24,6 +24,6 @@ jobs:
     displayName: 'install dependencies'
     continueOnError: false
 
-  - script: 'twine upload dist/*'
-    displayName: 'publish-python package'
-    continueOnError: true
+  # - script: 'twine upload dist/*'
+  #   displayName: 'publish-python package'
+  #   continueOnError: true
