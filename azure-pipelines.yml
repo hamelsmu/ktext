@@ -22,9 +22,9 @@ jobs:
       python -m pip install --upgrade pip  
       pip install twine wheel
       python setup.py sdist bdist_wheel
-    # displayName: 'install dependencies'
-    # continueOnError: false
+    displayName: 'install dependencies'
+    continueOnError: false
 
-  # - script: 'twine upload dist/*'
-  #   displayName: 'publish-python package'
-  #   continueOnError: true
+  - script: 'twine upload dist/*'
+    displayName: 'publish-python package'
+    continueOnError: true
