@@ -1,21 +1,6 @@
 
 jobs:
 
-- job: 'Setup'
-  pool:
-    vmImage: 'Ubuntu 16.04'
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.6'
-  - script: pip install --upgrade pip wheel twine setuptools 
-    displayName: 'upgrade pip'
-    continueOnError: false
-  - script: |
-      python setup.py sdist bdist_wheel
-    displayName: 'package artifacts'
-    continueOnError: false
-
 - job: 'Test'
   pool:
     vmImage: 'Ubuntu 16.04'
@@ -37,11 +22,8 @@ jobs:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.6'
-  - script: sudo apt install python3-pip --reinstall -y
-    displayName: 'install pip'
-    continueOnError: false
-  - script: pip install --upgrade pip  
-    displayName: 'upgrade pip'
+  - script: pip install --upgrade pip wheel twine setuptools  
+    displayName: 'install dependencies'
     continueOnError: false
   - script: |
       python setup.py sdist bdist_wheel
