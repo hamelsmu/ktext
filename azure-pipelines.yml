@@ -1,6 +1,17 @@
 
 jobs:
 
+- job: 'Setup'
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  steps:
+  - script: |
+      sudo apt install python3-pip --reinstall -y
+      python -m pip install --upgrade pip  
+      pip install twine wheel setuptools
+    displayName: 'install dependencies'
+    continueOnError: false
+
 - job: 'Test'
   pool:
     vmImage: 'Ubuntu 16.04'
@@ -18,13 +29,6 @@ jobs:
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
-  - script: |
-      apt install python3-pip --reinstall
-      python -m pip install --upgrade pip  
-      pip install twine wheel setuptools
-    displayName: 'install dependencies'
-    continueOnError: false
-
   - script: |
       python setup.py sdist bdist_wheel
     displayName: 'package artifacts'
