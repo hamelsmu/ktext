@@ -1,11 +1,12 @@
 pr:
 - master
 
-pool:
-  vmImage: 'Ubuntu-16.04'
-
 jobs:
-- job: Test
+
+
+- job: 'Test'
+  pool:
+    vmImage: 'Ubuntu 16.04'
   steps:
   - script: docker build -t integration_test .
     displayName: 'docker build'
@@ -13,8 +14,12 @@ jobs:
   - script: docker run integration_test bash integration_test.sh
     displayName: 'integration test'
     continueOnError: false
-- job: Publish
-  dependsOn: Test
+
+
+- job: 'Publish'
+  dependsOn: 'Test'
+  pool:
+    vmImage: 'Ubuntu 16.04'
   steps:
   - script: |
       python -m pip install --upgrade pip  
