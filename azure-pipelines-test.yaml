@@ -16,12 +16,3 @@ steps:
 - script: docker run integration_test bash integration_test.sh
   displayName: 'integration test'
   continueOnError: false
-
-- script: |
-    python -m pip install --upgrade pip  
-    pip install twine wheel
-    python setup.py sdist bdist_wheel
-  displayName: 'install dependencies'
-
-- script: 'twine upload dist/*'
-  displayName: 'publish-python package'
