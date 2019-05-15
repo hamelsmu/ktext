@@ -1,6 +1,3 @@
-pr:
-- master
-
 jobs:
 
 - job: 'Test'
