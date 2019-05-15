@@ -9,8 +9,8 @@ jobs:
     displayName: 'install pip'
     continueOnError: false
   - script: python -m pip install --upgrade pip  
-    displayName: 'install pip'
-    continueOnError: 'upgrade pip'
+    displayName: 'upgrade pip'
+    continueOnError: false
 
 - job: 'Test'
   pool:
