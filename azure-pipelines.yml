@@ -4,6 +4,9 @@ jobs:
 - job: 'Setup'
   pool:
     vmImage: 'Ubuntu 16.04'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
   steps:
   - script: sudo apt install python3-pip --reinstall -y
     displayName: 'install pip'
