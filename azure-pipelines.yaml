@@ -4,15 +4,31 @@ pr:
 pool:
   vmImage: 'Ubuntu-16.04'
 
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.6'
+jobs:
+- job: Test
 
-- script: docker build -t integration_test .
-  displayName: 'docker build'
-  continueOnError: false
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
 
-- script: docker run integration_test bash integration_test.sh
-  displayName: 'integration test'
-  continueOnError: false
+  - script: docker build -t integration_test .
+    displayName: 'docker build'
+    continueOnError: false
+
+  - script: docker run integration_test bash integration_test.sh
+    displayName: 'integration test'
+    continueOnError: false
+
+- job: Publish
+  dependsOn: Test
+  - script: |
+      python -m pip install --upgrade pip  
+      pip install twine wheel
+      python setup.py sdist bdist_wheel
+    displayName: 'install dependencies'
+    continueOnError: false
+
+  - script: 'twine upload dist/*'
+    displayName: 'publish-python package'
+    continueOnError: true
