@@ -8,10 +8,7 @@ jobs:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.6'
-  - script: sudo apt install python3-pip --reinstall -y
-    displayName: 'install pip'
-    continueOnError: false
-  - script: pip install --upgrade pip  
+  - script: pip install --upgrade pip wheel twine setuptools 
     displayName: 'upgrade pip'
     continueOnError: false
   - script: |
