@@ -11,4 +11,4 @@ ENV CFLAGS="-std=c99"
 COPY . ktext-lib/
 WORKDIR ktext-lib
 
-CMD [ "bash ktext-lib/integration_test.sh"]
+CMD /bin/bash integration_test.sh
