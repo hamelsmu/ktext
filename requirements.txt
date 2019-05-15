@@ -22,7 +22,7 @@ jsonschema==3.0.1
 Keras==2.2.4
 Keras-Applications==1.0.7
 Keras-Preprocessing==1.0.9
-ktext==0.34
+ktext==0.40
 Markdown==3.1
 mock==3.0.5
 more-itertools==7.0.0
