@@ -4,7 +4,7 @@ trigger:
     - release
   paths:
     include:
-    - ktext/
+    - ktext/*
 
 pool:
   vmImage: 'Ubuntu-16.04'
