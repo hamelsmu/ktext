@@ -5,11 +5,11 @@ jobs:
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
-  - script: docker build -t integration_test .
+  - script: docker build -t integration_test -f test.Dockerfile .
     displayName: 'docker build'
     continueOnError: false
 
-  - script: docker run integration_test bash integration_test.sh
+  - script: docker run integration_test
     displayName: 'integration test'
     continueOnError: false
 
