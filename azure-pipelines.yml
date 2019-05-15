@@ -8,8 +8,12 @@ jobs:
   - script: sudo apt install python3-pip --reinstall -y
     displayName: 'install pip'
     continueOnError: false
-  - script: python -m pip install --upgrade pip  
+  - script: pip install --upgrade pip  
     displayName: 'upgrade pip'
+    continueOnError: false
+  - script: |
+      python setup.py sdist bdist_wheel
+    displayName: 'package artifacts'
     continueOnError: false
 
 - job: 'Test'
@@ -29,11 +33,6 @@ jobs:
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
-  - script: |
-      python setup.py sdist bdist_wheel
-    displayName: 'package artifacts'
-    continueOnError: false
-
   - script: 'twine upload dist/*'
     displayName: 'publish-python package'
     continueOnError: true
