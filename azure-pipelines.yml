@@ -4,10 +4,10 @@ jobs:
 - job: 'Setup'
   pool:
     vmImage: 'Ubuntu 16.04'
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.6'
   steps:
+  - task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.6'
   - script: sudo apt install python3-pip --reinstall -y
     displayName: 'install pip'
     continueOnError: false
@@ -35,7 +35,21 @@ jobs:
   dependsOn: 'Test'
   pool:
     vmImage: 'Ubuntu 16.04'
+
   steps:
+  - task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.6'
+  - script: sudo apt install python3-pip --reinstall -y
+  displayName: 'install pip'
+  continueOnError: false
+  - script: pip install --upgrade pip  
+    displayName: 'upgrade pip'
+    continueOnError: false
+  - script: |
+      python setup.py sdist bdist_wheel
+    displayName: 'package artifacts'
+    continueOnError: false
   - script: 'twine upload dist/*'
     displayName: 'publish-python package'
     continueOnError: true
