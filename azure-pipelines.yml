@@ -25,6 +25,11 @@ jobs:
     displayName: 'install dependencies'
     continueOnError: false
 
+  - script: |
+      python setup.py sdist bdist_wheel
+    displayName: 'package artifacts'
+    continueOnError: false
+
   - script: 'twine upload dist/*'
     displayName: 'publish-python package'
     continueOnError: true
