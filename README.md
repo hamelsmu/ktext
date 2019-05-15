@@ -1,6 +1,7 @@
 [![GitHub license](https://img.shields.io/github/license/hamelsmu/ktext.svg)](https://github.com/hamelsmu/ktext/blob/master/LICENSE) 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)](https://github.com/hamelsmu/ktext)
 [![Build Status](https://dev.azure.com/hahusain/hahusain/_apis/build/status/hamelsmu.ktext%20test?branchName=master)](https://dev.azure.com/hahusain/hahusain/_build/latest?definitionId=6&branchName=master)
+[![PyPI version](https://badge.fury.io/py/ktext.svg)](https://badge.fury.io/py/ktext)
 
 # Utilities for pre-processing text for deep learning in [Keras](https://keras.io/).  
 
