@@ -6,8 +6,8 @@ pool:
 
 steps:
 - task: UsePythonVersion@0
-inputs:
-  versionSpec: '3.6'
+  inputs:
+    versionSpec: '3.6'
 
 - script: docker build -t integration_test .
   displayName: 'docker build'
