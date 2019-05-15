@@ -13,7 +13,6 @@ jobs:
   - script: docker run integration_test bash integration_test.sh
     displayName: 'integration test'
     continueOnError: false
-
 - job: Publish
   dependsOn: Test
   steps:
