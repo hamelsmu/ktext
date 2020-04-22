@@ -1,3 +1,5 @@
+# Note: This utility is really old and is no longer maintained.  You should use [keras.layers.TextVectorization](https://twitter.com/fchollet/status/1197719539934359552?s=20) instead of this.  
+
 [![GitHub license](https://img.shields.io/github/license/hamelsmu/ktext.svg)](https://github.com/hamelsmu/ktext/blob/master/LICENSE) 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)](https://github.com/hamelsmu/ktext)
 [![Build Status](https://dev.azure.com/hahusain/hahusain/_apis/build/status/hamelsmu.ktext%20test?branchName=master)](https://dev.azure.com/hahusain/hahusain/_build/latest?definitionId=6&branchName=master)
