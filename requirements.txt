@@ -7,7 +7,7 @@ certifi==2019.3.9
 chardet==3.0.4
 cymem==2.0.2
 cytoolz==0.9.0.1
-dask==1.2.2
+dask==2021.10.0
 decorator==4.4.0
 dill==0.2.9
 ftfy==4.4.3
