@@ -38,7 +38,7 @@ plac==0.9.6
 pox==0.2.5
 ppft==1.6.4.9
 preshed==2.0.1
-protobuf==3.7.1
+protobuf==3.18.3
 pyarrow==0.13.0
 pyemd==0.5.1
 Pyphen==0.9.5
